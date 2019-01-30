@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>gtest</groupId>
+  <artifactId>gtest</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>gtest</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>jp.co.yahoo.yosegi</groupId>
+      <artifactId>yosegi</artifactId>
+      <version>$yosegi_version</version>
+    </dependency>
+    <dependency>
+      <groupId>jp.co.yahoo.yosegi</groupId>
+      <artifactId>yosegi-hive</artifactId>
+      <version>$yosegi_hive_version</version>
+    </dependency>
+    <dependency>
+      <groupId>jp.co.yahoo.yosegi</groupId>
+      <artifactId>yosegi-hadoop</artifactId>
+      <version>$yosegi_hadoop_version</version>
+    </dependency>
+    <dependency>
+      <groupId>jp.co.yahoo.yosegi</groupId>
+      <artifactId>yosegi-avro</artifactId>
+      <version>$yosegi_avro_version</version>
+    </dependency>
+    <dependency>
+      <groupId>jp.co.yahoo.yosegi</groupId>
+      <artifactId>yosegi-legacy</artifactId>
+      <version>$yosegi_legacy_version</version>
+    </dependency>
+  </dependencies>
+</project>
