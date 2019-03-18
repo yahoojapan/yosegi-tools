@@ -62,7 +62,7 @@ Create an Yosegi file.
 
 Example of execution
 ```
-$ bin/yosegi.sh create -i src/example/src/main/resources/sample_json.txt -f json -o /tmp/sample.yosegi
+$ bin/yosegi.sh create -i etc/sample_json.txt -f json -o /tmp/sample.yosegi
 ```
 
 ## cat 

@@ -23,7 +23,7 @@
     <dependency>
       <groupId>org.apache.hive</groupId>
       <artifactId>hive-metastore</artifactId>
-      <version>1.2.1000.2.6.2.0-205</version>
+      <version>2.3.4</version>
     </dependency>
     <dependency>
       <groupId>org.apache.arrow</groupId>
@@ -74,14 +74,6 @@
   </dependencies>
 
   <repositories>
-    <repository>
-      <id>hdp</id>
-      <url> http://repo.hortonworks.com/content/repositories/releases</url>
-      <name>HDP</name>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
     <repository>
       <id>spring</id>
       <url>http://repo.spring.io/plugins-release/</url>
