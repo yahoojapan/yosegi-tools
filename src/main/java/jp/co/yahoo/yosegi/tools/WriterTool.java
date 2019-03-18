@@ -30,6 +30,7 @@ import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.HelpFormatter;
 
+import jp.co.yahoo.yosegi.config.Configuration;
 import jp.co.yahoo.yosegi.message.parser.IStreamReader;
 
 import jp.co.yahoo.yosegi.writer.YosegiRecordWriter;
@@ -39,6 +40,14 @@ public final class WriterTool{
   private WriterTool(){}
 
   public static Options createOptions( final String[] args ){
+
+    Option codec = OptionBuilder.
+      withLongOpt("codec").
+      withDescription("Compress codec class.").
+      hasArg().
+      withArgName("codec").
+      create( 'c' );
+
     Option format = OptionBuilder.
       withLongOpt("format").
       withDescription("Input data format. [json|].").
@@ -79,6 +88,7 @@ public final class WriterTool{
     Options  options = new Options();
 
     return options
+      .addOption( codec )
       .addOption( format )
       .addOption( input )
       .addOption( output )
@@ -110,12 +120,18 @@ public final class WriterTool{
     String format = cl.getOptionValue( "format" , null );
     String schema = cl.getOptionValue( "schema" , null );
     String output = cl.getOptionValue( "output" , null );
+    String codec = cl.getOptionValue( "codec" , null );
 
     InputStream in = FileUtil.fopen( input );
     IStreamReader reader = StreamReaderFactory.create( in , format , schema );
     OutputStream out = FileUtil.create( output );
 
-    YosegiRecordWriter writer = new YosegiRecordWriter( out );
+    Configuration config = new Configuration();
+    if( codec != null ){
+      config.set( "spread.column.maker.default.compress.class" , codec );
+    }
+
+    YosegiRecordWriter writer = new YosegiRecordWriter( out , config );
 
     while( reader.hasNext() ){
       writer.addParserRow( reader.next() );

@@ -54,6 +54,7 @@
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-compress</artifactId>
       <version>1.18</version>
+      <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>net.jpountz.lz4</groupId>
