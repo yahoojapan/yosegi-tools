@@ -44,6 +44,7 @@ import jp.co.yahoo.yosegi.spread.column.IColumn;
 import jp.co.yahoo.yosegi.stats.SummaryStats;
 import jp.co.yahoo.yosegi.binary.ColumnBinary;
 import jp.co.yahoo.yosegi.binary.ColumnBinaryMakerConfig;
+import jp.co.yahoo.yosegi.binary.CompressResultNode;
 import jp.co.yahoo.yosegi.binary.FindColumnBinaryMaker;
 import jp.co.yahoo.yosegi.binary.maker.IColumnBinaryMaker;
 import jp.co.yahoo.yosegi.compressor.ICompressor;
@@ -128,7 +129,7 @@ public final class StoragePerformanceTool{
 
     Runtime.getRuntime().gc();
     CpuTimeUtil.CpuTime toBinaryStart = CpuTimeUtil.getCurrentCpuTime( Thread.currentThread().getId() );
-    ColumnBinary columnBinary = maker.toBinary( commonConfig , null , column );
+    ColumnBinary columnBinary = maker.toBinary( commonConfig , null , new CompressResultNode() , column );
     CpuTimeUtil.CpuTime toBinaryEnd = CpuTimeUtil.getCurrentCpuTime( Thread.currentThread().getId() );
 
     long toBinaryCpuTimeNano = CpuTimeUtil.calcCpuTimeNano( toBinaryStart , toBinaryEnd );
