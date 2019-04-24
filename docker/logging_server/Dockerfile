@@ -31,6 +31,6 @@ RUN chmod 700 /startup.sh
 RUN apk add openjdk8 
 
 # Install server
-COPY --from=build /opt/source/target/simple-server-0.0.1-jar-with-dependencies.jar /server.jar
+COPY --from=build /opt/source/target/logging-server-0.0.1-jar-with-dependencies.jar /server.jar
 
 CMD ["/startup.sh"]
