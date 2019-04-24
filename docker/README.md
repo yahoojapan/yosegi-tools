@@ -70,7 +70,7 @@ If you want to send the original log, please refer to the following example.
 $ curl -X POST -d 'message={"log_name":"my_log","hoge":100}'  localhost:12345/logging
 
 # datagen, logger_server, local_hive
-$ curl -X POST -d 'message={"log_name":"my_log","hoge":100}'  logger_server:8080/loggig
+$ curl -X POST -d 'message={"log_name":"my_log","hoge":100}'  logger_server:8080/logging
 
 ```
 
