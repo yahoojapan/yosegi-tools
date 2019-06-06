@@ -15,6 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package jp.co.yahoo.yosegi.tools;
 
 import java.io.IOException;
@@ -33,6 +34,7 @@ public final class YosegiTool{
     System.err.println( "merge Merge Yosegi files." );
     System.err.println( "to_arrow Create Arrow binary." );
     System.err.println( "from_arrow Create Yosegi file from Arrow binary." );
+    System.err.println( "find_sort_key Find Sort Key with Best Compression Efficiency" );
     System.err.println( "help view help." );
   }
 
@@ -71,6 +73,9 @@ public final class YosegiTool{
     }
     else if( "from_arrow".equals( command ) ){
       ConvertArrowFormatToYosegi.main( commandArgs );
+    }
+    else if( "find_sort_key".equals( command ) ){
+      FindBestSortKey.main( commandArgs );
     }
     else if( "help".equals( command ) ){
       printHelp();
