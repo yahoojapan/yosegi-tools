@@ -86,7 +86,7 @@
     <dependency>
       <groupId>org.apache.hive</groupId>
       <artifactId>hive-exec</artifactId>
-      <version>1.2.1000.2.6.4.0-91</version>
+      <version>3.1.1</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -113,18 +113,18 @@
     <dependency>
       <groupId>jp.co.yahoo.yosegi</groupId>
       <artifactId>yosegi-hive</artifactId>
-      <version>0.9.0</version>
+      <version>0.10.0_hive-3.1.1</version>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
-      <version>2.9.8</version>
+      <version>2.9.9</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-annotations</artifactId>
-      <version>2.9.8</version>
+      <version>2.9.9</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -160,14 +160,6 @@
   </dependencies>
 
   <repositories>
-    <repository>
-      <id>hdp</id>
-      <url> http://repo.hortonworks.com/content/repositories/releases</url>
-      <name>HDP</name>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
     <repository>
       <id>spring</id>
       <url>http://repo.spring.io/plugins-release/</url>
