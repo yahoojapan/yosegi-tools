@@ -29,15 +29,6 @@ public class Loggers {
     this.loggers = loggers;
   }
 
-  public boolean logging2( final byte[] message ) throws IOException {
-    for ( int i = 0 ; i < loggers.length ; i++ ) {
-      if( loggers[i].logging( message ) ) {
-        return true;
-      }
-    }
-    return false;
-  }
-
   public boolean[] logging( final byte[] message ) throws IOException {
     boolean[] result = new boolean[loggers.length];
     for ( int i = 0 ; i < result.length ; i++ ) {

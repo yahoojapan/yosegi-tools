@@ -35,7 +35,7 @@ docker-compose up -d
 
 # Run hive
 
-Ser's results are sent to logger_server from datagen's docker image
+Results of the sar command are sent to logger_server from datagen's docker image
 logger_server converts to yosegi files every minute.
 This destination volume can be written and read by logger_server and local_hive.
 

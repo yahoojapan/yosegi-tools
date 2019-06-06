@@ -26,7 +26,7 @@ RUN wget http://ftp.jaist.ac.jp/pub/apache/hive/hive-3.1.1/apache-hive-3.1.1-bin
 RUN tar xvf apache-hive-3.1.1-bin.tar.gz
 RUN mv apache-hive-3.1.1-bin /opt/hive
 
-RUN wget http://ftp.yz.yamagata-u.ac.jp/pub/network/apache//db/derby/db-derby-10.14.2.0/db-derby-10.14.2.0-bin.tar.gz
+RUN wget http://ftp.yz.yamagata-u.ac.jp/pub/network/apache/db/derby/db-derby-10.14.2.0/db-derby-10.14.2.0-bin.tar.gz
 RUN tar xvfz db-derby-10.14.2.0-bin.tar.gz
 RUN mv db-derby-10.14.2.0-bin /opt/db-derby
 
