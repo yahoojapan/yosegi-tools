@@ -233,13 +233,13 @@ public class FindBestSortKey {
       byte[] sortKey = null;
       String sortKeyStr = currentParser.get( k.keys.get( k.keys.size() - 1 ) ).getString();
       if ( sortKeyStr != null ) {
-        sortKey = sortKeyStr.replace( "" , "" ).getBytes();
+        sortKey = sortKeyStr.replace( "\u0001" , "" ).getBytes();
       }
       byte[] json = jsonWriter.create( parser );
       if ( sortKey != null ) {
         sortOut.write( sortKey );
       }
-      sortOut.write( (byte)'');
+      sortOut.write( (byte)0x01);
       sortOut.write( json );
       sortOut.write( (byte)'\n');
     }
@@ -254,7 +254,7 @@ public class FindBestSortKey {
       byte[] buffer = lineReader.get();
       int start = 0;
       for ( ; start < lineLength ; start++ ) {
-        if ( buffer[start] == (byte)'' ) {
+        if ( buffer[start] == (byte)0x01 ) {
           start++;
           break;
         }
