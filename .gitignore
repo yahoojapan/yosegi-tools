@@ -2,6 +2,7 @@ target/
 .settings/
 .classpath
 .project
+.yosegi
 test-output/
 # Byte-compiled / optimized / DLL files
 __pycache__/
