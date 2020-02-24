@@ -110,7 +110,7 @@ function get_jars() {
 }
 
 
-yosegi_source=$SCRIPT_DIR/yosegi_deliver/version.sh
+yosegi_source=$SCRIPT_DIR/yosegi_deliver/versions.sh
 while getopts i:l:h OPT
 do
   case $OPT in
