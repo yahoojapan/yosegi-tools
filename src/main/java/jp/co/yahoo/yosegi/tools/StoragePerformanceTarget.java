@@ -24,6 +24,7 @@ import jp.co.yahoo.yosegi.binary.maker.*;
 import jp.co.yahoo.yosegi.compressor.*;
 import jp.co.yahoo.yosegi.spread.column.ColumnType;
 
+
 public final class StoragePerformanceTarget{
 
   public static IColumnBinaryMaker[] getColumnBinaryMaker( final ColumnType columnType ){
@@ -82,7 +83,7 @@ public final class StoragePerformanceTarget{
       new GzipCompressor(),
       new BZip2CommonsCompressor(),
       new FramedLZ4CommonsCompressor(),
-      new FramedSnappyCommonsCompressor(),
+      new SnappyCommonsCompressor(),
       new LzmaCommonsCompressor(),
       new ZstdCommonsCompressor(),
     };
