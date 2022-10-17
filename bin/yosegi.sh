@@ -44,7 +44,7 @@ function java_exec() {
   do
     class_paths="$class_paths:$dn/*"
   done
-  $JAVA_CMD $JAVA_OPTS -Xmx$HEAP_SIZE -Xms$HEAP_SIZE -cp "$class_paths" jp.co.yahoo.yosegi.tools.YosegiTool $*
+  $JAVA_CMD $JAVA_OPTS --add-opens=java.base/java.nio=ALL-UNNAMED -Xmx$HEAP_SIZE -Xms$HEAP_SIZE -cp "$class_paths" jp.co.yahoo.yosegi.tools.YosegiTool $*
 }
 
 function show_usage() {

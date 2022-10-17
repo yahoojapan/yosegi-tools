@@ -36,14 +36,16 @@ import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.HelpFormatter;
 
+import org.apache.arrow.memory.RootAllocator;
 import org.apache.arrow.vector.FieldVector;
 import org.apache.arrow.vector.ValueVector;
 import org.apache.arrow.vector.VectorSchemaRoot;
 import org.apache.arrow.vector.ipc.ArrowFileWriter;
 
 import jp.co.yahoo.yosegi.config.Configuration;
+import jp.co.yahoo.yosegi.inmemory.ArrowValueVectorRawConverter;
 import jp.co.yahoo.yosegi.reader.YosegiReader;
-import jp.co.yahoo.yosegi.reader.YosegiArrowReader;
+import jp.co.yahoo.yosegi.reader.WrapReader;
 
 public final class ConvertArrowFormatTool{
 
@@ -164,14 +166,17 @@ public final class ConvertArrowFormatTool{
       reader.setNewStream( in , fileLength , config );
     }
 
-    YosegiArrowReader arrowReader = new YosegiArrowReader( reader , config );
+    WrapReader<ValueVector> arrowReader = new WrapReader(
+        reader ,
+        new ArrowValueVectorRawConverter( new RootAllocator( Integer.MAX_VALUE ) , null ) );
     OutputStream out = FileUtil.create( output );
     convert( arrowReader , out , config );
-
     return 0;
   }
 
-  public static void convert( final YosegiArrowReader arrowReader , final OutputStream out , final Configuration config ) throws IOException{
+  public static void convert(
+      final WrapReader<ValueVector> arrowReader ,
+      final OutputStream out , final Configuration config ) throws IOException{
     ArrowFileWriter writer = null;
     while( arrowReader.hasNext() ){
       ValueVector vector = arrowReader.next();
