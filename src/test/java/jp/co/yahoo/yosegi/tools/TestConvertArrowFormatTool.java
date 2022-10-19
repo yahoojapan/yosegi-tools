@@ -45,6 +45,7 @@ import org.apache.arrow.memory.RootAllocator;
 import org.apache.arrow.vector.FieldVector;
 import org.apache.arrow.vector.VectorSchemaRoot;
 import org.apache.arrow.vector.BigIntVector;
+import org.apache.arrow.vector.ValueVector;
 import org.apache.arrow.vector.VarCharVector;
 import org.apache.arrow.vector.types.pojo.Field;
 import org.apache.arrow.vector.ipc.SeekableReadChannel;
@@ -55,9 +56,10 @@ import jp.co.yahoo.yosegi.config.Configuration;
 
 import jp.co.yahoo.yosegi.message.objects.*;
 
+import jp.co.yahoo.yosegi.inmemory.ArrowValueVectorRawConverter;
 import jp.co.yahoo.yosegi.writer.YosegiWriter;
 import jp.co.yahoo.yosegi.reader.YosegiReader;
-import jp.co.yahoo.yosegi.reader.YosegiArrowReader;
+import jp.co.yahoo.yosegi.reader.WrapReader;
 import jp.co.yahoo.yosegi.spread.Spread;
 
 public class TestConvertArrowFormatTool{
@@ -98,7 +100,9 @@ public class TestConvertArrowFormatTool{
     YosegiReader reader = new YosegiReader();
     Configuration config = new Configuration();
     reader.setNewStream( in , yosegiFile.length , config );
-    YosegiArrowReader arrowReader = new YosegiArrowReader( reader , config );
+    WrapReader<ValueVector> arrowReader = new WrapReader(
+        reader ,
+        new ArrowValueVectorRawConverter( new RootAllocator( Integer.MAX_VALUE ) , null ) );
     File testFile = new File( "target/TestConvertArrowFormatTool_T_convert_1.yosegi" );
     if( testFile.exists() ){
       testFile.delete();
@@ -107,7 +111,8 @@ public class TestConvertArrowFormatTool{
     ConvertArrowFormatTool.convert( arrowReader , out , config );
 
     FileInputStream arrowIn = new FileInputStream( testFile ); 
-    ArrowFileReader ar = new ArrowFileReader( arrowIn.getChannel() , new RootAllocator( Integer.MAX_VALUE ) );
+    ArrowFileReader ar = new ArrowFileReader(
+        arrowIn.getChannel() , new RootAllocator( Integer.MAX_VALUE ) );
     VectorSchemaRoot root  = ar.getVectorSchemaRoot();
     ArrowBlock rbBlock = ar.getRecordBlocks().get(0);
     ar.loadRecordBatch(rbBlock);

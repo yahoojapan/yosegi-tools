@@ -82,7 +82,7 @@ public final class StoragePerformanceTarget{
       new GzipCompressor(),
       new BZip2CommonsCompressor(),
       new FramedLZ4CommonsCompressor(),
-      new FramedSnappyCommonsCompressor(),
+      new SnappyCommonsCompressor(),
       new LzmaCommonsCompressor(),
       new ZstdCommonsCompressor(),
     };

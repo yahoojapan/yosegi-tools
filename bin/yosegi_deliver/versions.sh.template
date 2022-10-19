@@ -1,5 +1,5 @@
-yosegi=0.10.0
-yosegi_hive=0.9.0
+yosegi=2.0.3
+yosegi_hive=2.0.0_hive-3.1.3
 yosegi_hadoop=0.9.0
 yosegi_avro=0.9.0
-yosegi_legacy=0.9.0
+yosegi_legacy=2.0.1

@@ -42,7 +42,6 @@ import org.apache.arrow.vector.ipc.ArrowFileReader;
 
 import jp.co.yahoo.yosegi.config.Configuration;
 import jp.co.yahoo.yosegi.writer.YosegiWriter;
-import jp.co.yahoo.yosegi.reader.YosegiArrowReader;
 import jp.co.yahoo.yosegi.spread.Spread;
 import jp.co.yahoo.yosegi.spread.ArrowSpreadUtil;
 
@@ -110,12 +109,13 @@ public final class ConvertArrowFormatToYosegi{
     ArrowFileReader arrowReader = new ArrowFileReader( new FileInputStream( input ).getChannel() , new RootAllocator( Integer.MAX_VALUE ) );
     OutputStream out = FileUtil.create( output );
     YosegiWriter writer = new YosegiWriter( out , config );
-    List<ArrowBlock> blockList = arrowReader.getRecordBlocks();
-    for( ArrowBlock block : blockList ){
+    for( ArrowBlock block : arrowReader.getRecordBlocks() ){
+      arrowReader.loadRecordBatch(block);
       VectorSchemaRoot root = arrowReader.getVectorSchemaRoot();
       arrowReader.loadRecordBatch(block);
       List<FieldVector> fieldVectorList = root.getFieldVectors();
       Spread spread = ArrowSpreadUtil.toSpread( root.getRowCount() , fieldVectorList );
+      
       writer.append( spread );
     }
     arrowReader.close();
