@@ -12,7 +12,7 @@
   limitations under the License. See accompanying LICENSE file.
 -->
 
-# Yosegi Hive
+# Yosegi Tools
 This is [Yosegi](https://github.com/yahoojapan/yosegi) tools.
 
 # License

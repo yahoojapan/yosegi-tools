@@ -4,8 +4,8 @@
         <server>
             <!-- Maven Central Deployment -->
             <id>ossrh</id>
-            <username>${env.SONATYPE_USERNAME}</username>
-            <password>${env.SONATYPE_PASSWORD}</password>
+            <username>${env.SONATYPE_USERTOKEN_ID}</username>
+            <password>${env.SONATYPE_USERTOKEN_TOKEN}</password>
         </server>
     </servers>
 </settings>
