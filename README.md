@@ -35,7 +35,7 @@ For preparation, get Yosegi jars and store then to proper directories.
 
     $ bin/setup.sh # get Yosegi jars from Maven repository (bin/setup.sh -h for help)
 
-convert JSON data to MDS format.
+convert JSON data to Yosegi format.
 
     $ bin/yosegi.sh create -i etc/sample_json.txt -f json -o /tmp/sample.yosegi
     $ bin/yosegi.sh cat -i /tmp/sample.yosegi -o '-' # show whole data
